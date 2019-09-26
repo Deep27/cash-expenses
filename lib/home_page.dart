@@ -1,0 +1,30 @@
+import 'package:flutter/material.dart';
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Flutter App')),
+      body: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            child: Card(
+              color: Colors.amber,
+              elevation: 5,
+              child: Text('CHART!'),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            child: Card(
+              color: Colors.amber,
+              elevation: 5,
+              child: Text('List of TX'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
