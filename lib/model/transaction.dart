@@ -1,14 +1,13 @@
-import 'package:flutter/foundation.dart';
-
 class Transaction {
-  final String id;
-  final String title;
-  final double amount;
-  final DateTime date;
+  final String _id;
+  final String _title;
+  final double _amount;
+  final DateTime _date;
 
-  Transaction(
-      {@required this.id,
-      @required this.title,
-      @required this.amount,
-      @required this.date});
+  String get id => _id;
+  String get title => _title;
+  double get amount => _amount;
+  DateTime get date => _date;
+
+  Transaction(this._id, this._title, this._amount, this._date);
 }

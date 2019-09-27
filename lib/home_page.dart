@@ -1,14 +1,12 @@
 import './model/transaction.dart';
-import 'package:flutter/material.dart'; 
+import './widget/transaction_widget.dart';
+import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   final List<Transaction> _transactions = [
-    Transaction(
-        id: 't1', title: 'Good friends', date: DateTime.now(), amount: 0),
-    Transaction(
-        id: 't2', title: 'A better life', date: DateTime.now(), amount: 0),
-    Transaction(
-        id: 't2', title: 'Happy people', date: DateTime.now(), amount: 0),
+    Transaction('t1', 'Good friends', 0, DateTime.now()),
+    Transaction('t2', 'A better life', 0, DateTime.now()),
+    Transaction('t3', 'Happy people', 0, DateTime.now()),
   ];
 
   @override
@@ -29,11 +27,7 @@ class HomePage extends StatelessWidget {
             width: double.infinity,
             child: Column(
               children: _transactions
-                  .map((tx) => Card(
-                        color: Colors.amber,
-                        elevation: 5,
-                        child: Text(tx.title),
-                      ))
+                  .map((tx) => TransactionWidget.fromTransaction(tx))
                   .toList(),
             ),
           ),
