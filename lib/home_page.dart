@@ -1,5 +1,6 @@
+import 'package:cash_expenses/widget/transaction/transaction_widget.dart';
+
 import './model/transaction.dart';
-import './widget/transaction_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,13 +15,22 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Flutter App')),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Container(
             width: double.infinity,
-            child: Card(
-              color: Colors.amber,
+            child: Card( 
+              color: Colors.amber, 
               elevation: 5,
-              child: Text('CHART!'),
+              child: Text( 
+                'CHART!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.brown,
+                ),
+              ),
             ),
           ),
           Container(

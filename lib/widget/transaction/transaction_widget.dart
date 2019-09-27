@@ -1,4 +1,7 @@
-import '../model/transaction.dart';
+import 'package:cash_expenses/model/transaction.dart';
+import 'package:cash_expenses/widget/transaction/price_box.dart';
+import 'package:cash_expenses/widget/transaction/transaction_date.dart';
+import 'package:cash_expenses/widget/transaction/transaction_title.dart';
 import 'package:flutter/material.dart';
 
 class TransactionWidget extends StatelessWidget {
@@ -19,16 +22,13 @@ class TransactionWidget extends StatelessWidget {
       color: Colors.amber,
       elevation: 5,
       child: Row(
-        children: <Widget>[ 
-          Container(
-            child: Text(
-              _transaction.amount.toStringAsFixed(2),
-            ),
-          ),
+        children: <Widget>[
+          PriceBox(_transaction.amount),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(_transaction.title),
-              Text(_transaction.date.toString()),
+              TransactionTitle(_transaction.title),
+              TransactionDate(_transaction.date),
             ],
           )
         ],
