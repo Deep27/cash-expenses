@@ -1,17 +1,19 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TransactionDate extends StatelessWidget {
-  final DateTime _date;
+  final String _date;
 
-  TransactionDate(this._date);
+  TransactionDate(DateTime date)
+      : _date = DateFormat('dd-MM-yyyy HH:mm').format(date);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      _date.toString(),
+      _date,
       style: TextStyle(
-        color: Colors.grey,
+        color: Colors.red,
       ),
     );
   }

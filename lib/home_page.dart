@@ -1,3 +1,4 @@
+import 'package:cash_expenses/widget/chart/chart.dart';
 import 'package:cash_expenses/widget/transaction/transaction_widget.dart';
 
 import './model/transaction.dart';
@@ -15,21 +16,27 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Flutter App')),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card( 
-              color: Colors.amber, 
-              elevation: 5,
-              child: Text( 
-                'CHART!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.brown,
-                ),
+          ChartWidget(),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                  ),
+                  FlatButton(
+                    child: Text('Add transaction'),
+                    textColor: Colors.brown,
+                    onPressed: () {},
+                  )
+                ],
               ),
             ),
           ),

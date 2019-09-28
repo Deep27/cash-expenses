@@ -19,7 +19,7 @@ class PriceBox extends StatelessWidget {
         ),
       ),
       child: Text(
-        _amount.toStringAsFixed(2),
+        '\$' + _amount.toStringAsFixed(2),
         style: TextStyle(
             fontWeight: FontWeight.bold, fontSize: 20, color: Colors.brown),
       ),
