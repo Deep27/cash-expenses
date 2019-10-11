@@ -8,13 +8,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Flutter App')),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            ChartWidget(),
-            UserTransactions(),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          ChartWidget(),
+          UserTransactions(),
+        ],
       ),
     );
   }

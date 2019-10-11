@@ -21,19 +21,17 @@ class TransactionWidget extends StatelessWidget {
     return Card(
       color: Colors.amber,
       elevation: 5,
-      child: SingleChildScrollView(
-        child: Row(
-          children: <Widget>[
-            TransactionAmount(_transaction.amount),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                TransactionTitle(_transaction.title),
-                TransactionDate(_transaction.date),
-              ],
-            )
-          ],
-        ),
+      child: Row(
+        children: <Widget>[
+          TransactionAmount(_transaction.amount),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              TransactionTitle(_transaction.title),
+              TransactionDate(_transaction.date),
+            ],
+          )
+        ],
       ),
     );
   }
