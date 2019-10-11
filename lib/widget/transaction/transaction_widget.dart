@@ -1,5 +1,5 @@
 import 'package:cash_expenses/model/transaction.dart';
-import 'package:cash_expenses/widget/transaction/price_box.dart';
+import 'package:cash_expenses/widget/transaction/transaction_amount.dart';
 import 'package:cash_expenses/widget/transaction/transaction_date.dart';
 import 'package:cash_expenses/widget/transaction/transaction_title.dart';
 import 'package:flutter/material.dart';
@@ -21,17 +21,19 @@ class TransactionWidget extends StatelessWidget {
     return Card(
       color: Colors.amber,
       elevation: 5,
-      child: Row(
-        children: <Widget>[
-          PriceBox(_transaction.amount),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TransactionTitle(_transaction.title),
-              TransactionDate(_transaction.date),
-            ],
-          )
-        ],
+      child: SingleChildScrollView(
+        child: Row(
+          children: <Widget>[
+            TransactionAmount(_transaction.amount),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                TransactionTitle(_transaction.title),
+                TransactionDate(_transaction.date),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

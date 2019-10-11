@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class PriceBox extends StatelessWidget {
+class TransactionAmount extends StatelessWidget {
   final double _amount;
 
-  PriceBox(this._amount);
+  TransactionAmount(this._amount);
 
   @override
   Widget build(BuildContext context) {
