@@ -19,7 +19,7 @@ class TransactionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.amber,
+      color: Theme.of(context).primaryColor,
       elevation: 5,
       child: Row(
         children: <Widget>[

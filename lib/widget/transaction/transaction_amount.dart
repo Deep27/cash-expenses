@@ -14,14 +14,14 @@ class TransactionAmount extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         border: Border.all(
-          color: Colors.brown,
+          color: Theme.of(context).primaryColorLight,
           width: 2,
         ),
       ),
       child: Text(
-        '\$' + _amount.toStringAsFixed(2),
+        '\$${_amount.toStringAsFixed(2)}',
         style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 20, color: Colors.brown),
+            fontWeight: FontWeight.bold, fontSize: 20, color: Theme.of(context).primaryColorLight),
       ),
     );
   }

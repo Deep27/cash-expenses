@@ -13,7 +13,7 @@ class TransactionTitle extends StatelessWidget {
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
-        color: Colors.brown,
+        color: Theme.of(context).primaryColorLight,
       ),
     );
   }

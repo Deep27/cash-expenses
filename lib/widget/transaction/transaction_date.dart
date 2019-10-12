@@ -13,7 +13,7 @@ class TransactionDate extends StatelessWidget {
     return Text(
       _date,
       style: TextStyle(
-        color: Colors.red,
+        color: Theme.of(context).primaryColorDark,
       ),
     );
   }

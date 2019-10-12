@@ -7,7 +7,7 @@ class ChartWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: Card(
-        color: Colors.amber,
+        color: Theme.of(context).primaryColor,
         elevation: 10,
         margin: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
         child: Container(
@@ -18,7 +18,7 @@ class ChartWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-              color: Colors.brown,
+              color: Theme.of(context).primaryColorLight,
             ),
           ),
         ),
