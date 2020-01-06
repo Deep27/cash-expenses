@@ -4,6 +4,10 @@ class NewTransactionInputWidget extends StatelessWidget {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
 
+  final Function _addNewTransactionFunction;
+
+  NewTransactionInputWidget(this._addNewTransactionFunction);
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,9 +28,8 @@ class NewTransactionInputWidget extends StatelessWidget {
             FlatButton(
               child: Text('Add transaction'),
               textColor: Colors.purple,
-              onPressed: () =>
-                  print('${_titleController.text} & ${_amountController.text}'),
-            ),
+              onPressed: () => _addNewTransactionFunction(_titleController.text, double.parse(_amountController.text)),
+            )
           ],
         ),
       ),
