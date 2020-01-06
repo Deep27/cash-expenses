@@ -27,6 +27,46 @@ class _UserTransactionsWidgetState extends State<UserTransactionsWidget> {
         title: 'New thoughts',
         amount: double.infinity,
         date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
+    Transaction(
+        id: 't3',
+        title: 'New thoughts',
+        amount: double.infinity,
+        date: DateTime.now()),
   ];
 
   void _addNewTransaction(String title, double amount) {

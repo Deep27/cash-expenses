@@ -4,19 +4,22 @@ import 'package:cash_expenses/models/transaction/transaction.dart';
 import 'package:cash_expenses/widgets/transaction/transaction_widget.dart';
 
 class TransactionListWidget extends StatelessWidget {
-
   final List<Transaction> _transactions;
 
   TransactionListWidget(this._transactions);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ..._transactions
-            .map((t) => TransactionWidget(t.title, t.amount, t.date))
-            .toList(),
-      ],
+    return Container(
+      height: 300,
+      child: ListView.builder(
+        itemBuilder: (ctx, index) => TransactionWidget(
+          _transactions[index].title,
+          _transactions[index].amount,
+          _transactions[index].date,
+        ),
+        itemCount: _transactions.length,
+      ),
     );
   }
 }
