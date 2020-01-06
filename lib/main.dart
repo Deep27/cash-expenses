@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 
-import 'package:cash_expenses/transaction.dart';
+import 'package:cash_expenses/trastaction/model/transaction.dart';
+import 'package:cash_expenses/trastaction/widget/transaction_widget.dart';
 
 void main() => runApp(CashExpensesApp());
 
@@ -42,7 +43,7 @@ class CashExpensesApp extends StatelessWidget {
             Column(
               children: <Widget>[
                 ...transactions
-                    .map((t) => Card(child: Text('${t.amount} + ${t.title}')))
+                    .map((t) => TransactionWidget(t.amount, t.date, t.title))
                     .toList(),
               ],
             ),
