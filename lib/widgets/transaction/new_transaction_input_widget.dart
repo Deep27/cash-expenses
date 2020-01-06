@@ -6,6 +6,15 @@ class NewTransactionInputWidget extends StatelessWidget {
 
   final Function _addNewTransactionFunction;
 
+  void _submitData() {
+    final enteredTitle = _titleController.text;
+    final enteredAmount = double.parse(_amountController.text);
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+    _addNewTransactionFunction(enteredTitle, enteredAmount);
+  }
+
   NewTransactionInputWidget(this._addNewTransactionFunction);
 
   @override
@@ -24,11 +33,13 @@ class NewTransactionInputWidget extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: _amountController,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => _submitData,
             ),
             FlatButton(
               child: Text('Add transaction'),
               textColor: Colors.purple,
-              onPressed: () => _addNewTransactionFunction(_titleController.text, double.parse(_amountController.text)),
+              onPressed: _submitData,
             )
           ],
         ),
