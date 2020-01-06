@@ -1,12 +1,14 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 
 class TransactionWidget extends StatelessWidget {
+
+  final String _title;
   final double _amount;
   final DateTime _date;
-  final String _title;
 
-  TransactionWidget(this._amount, this._date, this._title);
+  TransactionWidget(this._title, this._amount, this._date);
 
   @override
   Widget build(BuildContext context) {

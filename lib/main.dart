@@ -1,26 +1,9 @@
+import 'package:cash_expenses/widgets/transaction/transaction_list_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'package:cash_expenses/trastaction/model/transaction.dart';
-import 'package:cash_expenses/trastaction/widget/transaction_widget.dart';
 
 void main() => runApp(CashExpensesApp());
 
 class CashExpensesApp extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-        id: 't1', title: 'New shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2',
-        title: 'Old friends',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-  ];
-
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
 
@@ -67,13 +50,7 @@ class CashExpensesApp extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              children: <Widget>[
-                ...transactions
-                    .map((t) => TransactionWidget(t.amount, t.date, t.title))
-                    .toList(),
-              ],
-            ),
+            TransactionListWidget(),
           ],
         ),
       ),
