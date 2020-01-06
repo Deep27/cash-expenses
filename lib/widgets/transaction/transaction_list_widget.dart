@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cash_expenses/models/transaction/transaction.dart';
 import 'package:cash_expenses/widgets/transaction/transaction_widget.dart';
 
-class TransactionListWidget extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _TransactionListWidgetState();
-}
-
-class _TransactionListWidgetState extends State<TransactionListWidget> {
+class TransactionListWidget extends StatelessWidget {
   final List<Transaction> _transactions = [
     Transaction(
       id: 't1',
