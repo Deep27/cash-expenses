@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:cash_expenses/widgets/chart_widget.dart';
 import 'package:cash_expenses/models/transaction/transaction.dart';
-import 'package:cash_expenses/widgets/transaction/new_transaction_input_widget.dart';
 import 'package:cash_expenses/widgets/transaction/transaction_list_widget.dart';
+import 'package:cash_expenses/widgets/transaction/new_transaction_input_widget.dart';
 
-class UserTransactionsWidget extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _UserTransactionsWidgetState createState() => _UserTransactionsWidgetState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _UserTransactionsWidgetState extends State<UserTransactionsWidget> {
+class _HomePageState extends State<HomePage> {
   final List<Transaction> _transactions = [
     Transaction(
       id: 't1',
@@ -80,13 +81,38 @@ class _UserTransactionsWidgetState extends State<UserTransactionsWidget> {
     });
   }
 
+  void _showAddTransactionBottomSheet(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) => NewTransactionInputWidget(_addNewTransaction),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        NewTransactionInputWidget(_addNewTransaction),
-        TransactionListWidget(_transactions),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Personal Expenses'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => _showAddTransactionBottomSheet(context),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => _showAddTransactionBottomSheet(context),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            ChartWidget(),
+            TransactionListWidget(_transactions),
+          ],
+        ),
+      ),
     );
   }
 }

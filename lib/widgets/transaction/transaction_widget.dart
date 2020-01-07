@@ -25,7 +25,7 @@ class TransactionWidget extends StatelessWidget {
               ),
             ),
             child: Text(
-              '\$${this._amount}',
+              '\$${this._amount.toStringAsFixed(2)}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
