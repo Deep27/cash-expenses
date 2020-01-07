@@ -21,6 +21,7 @@ class _NewTransactionInputWidgetState extends State<NewTransactionInputWidget> {
       return;
     }
     widget._addNewTransactionFunction(enteredTitle, enteredAmount);
+    Navigator.of(context).pop();
   }
 
   @override
