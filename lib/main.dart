@@ -7,8 +7,13 @@ void main() => runApp(CashExpensesApp());
 class CashExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( 
+    return MaterialApp(
       title: 'Personal Expenses',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        accentColor: Colors.amber,
+        fontFamily: 'BebasNeue'
+      ),
       home: HomePage(),
     );
   }

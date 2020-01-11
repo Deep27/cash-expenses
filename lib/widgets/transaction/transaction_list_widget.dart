@@ -11,15 +11,27 @@ class TransactionListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
-      child: ListView.builder(
-        itemBuilder: (ctx, index) => TransactionWidget(
-          _transactions[index].title,
-          _transactions[index].amount,
-          _transactions[index].date,
-        ),
-        itemCount: _transactions.length,
-      ),
+      height: 250,
+      child: _transactions.isEmpty
+          ? Column(
+              children: <Widget>[
+                Container(
+                  height: 200,
+                  child: Image.asset('assets/images/terminator.jpeg',
+                      fit: BoxFit.cover),
+                ),
+                SizedBox(height: 10),
+                Text('No transactions added yet.'),
+              ],
+            )
+          : ListView.builder(
+              itemBuilder: (ctx, index) => TransactionWidget(
+                _transactions[index].title,
+                _transactions[index].amount,
+                _transactions[index].date,
+              ),
+              itemCount: _transactions.length,
+            ),
     );
   }
 }

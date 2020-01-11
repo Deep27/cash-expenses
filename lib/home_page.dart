@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:cash_expenses/widgets/chart_widget.dart';
 import 'package:cash_expenses/models/transaction/transaction.dart';
+import 'package:cash_expenses/widgets/chart/chart_widget.dart';
 import 'package:cash_expenses/widgets/transaction/transaction_list_widget.dart';
 import 'package:cash_expenses/widgets/transaction/new_transaction_input_widget.dart';
 
@@ -12,63 +12,66 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Transaction> _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'New shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-        id: 't2',
-        title: 'Old friends',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
-    Transaction(
-        id: 't3',
-        title: 'New thoughts',
-        amount: double.infinity,
-        date: DateTime.now()),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'New shoes',
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //     id: 't2',
+    //     title: 'Old friends',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't3',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't4',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't5',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't6',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't7',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't8',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't9',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't10',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: 't11',
+    //     title: 'New thoughts',
+    //     amount: double.infinity,
+    //     date: DateTime.now()),
   ];
+
+  List<Transaction> get _recentTransactions => _transactions.where(
+      (tx) => tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)))).toList();
 
   void _addNewTransaction(String title, double amount) {
     setState(() {
@@ -92,7 +95,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expenses'),
+        title: Text(
+          'Personal Expenses',
+          style: TextStyle(
+            fontFamily: 'Open Sans',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
@@ -108,8 +117,8 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            ChartWidget(),
-            TransactionListWidget(_transactions),
+            ChartWidget(_transactions),
+            TransactionListWidget(_recentTransactions),
           ],
         ),
       ),
