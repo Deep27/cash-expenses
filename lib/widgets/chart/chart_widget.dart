@@ -38,16 +38,23 @@ class ChartWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: Card(
-        child: Row(
-          children: groupedTransactionValues
-              .map((tx) => ChartBarWidget(
-                    tx[_DAY],
-                    tx[_AMOUNT],
-                    totalSpending == 0.0
-                        ? 0.0
-                        : (tx[_AMOUNT] as double) / totalSpending,
-                  ))
-              .toList(),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: groupedTransactionValues
+                .map((tx) => Flexible(
+                      fit: FlexFit.tight,
+                      child: ChartBarWidget(
+                        tx[_DAY],
+                        tx[_AMOUNT],
+                        totalSpending == 0.0
+                            ? 0.0
+                            : (tx[_AMOUNT] as double) / totalSpending,
+                      ),
+                    ))
+                .toList(),
+          ),
         ),
         margin: EdgeInsets.all(20),
         elevation: 6,
