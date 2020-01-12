@@ -26,7 +26,7 @@ class ChartWidget extends StatelessWidget {
           _DAY: DateFormat.E().format(weekDay).substring(0, 1),
           _AMOUNT: totalSum,
         };
-      });
+      }).reversed.toList();
 
   ChartWidget(this._recentTransactions);
 
