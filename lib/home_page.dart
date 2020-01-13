@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cash_expenses/models/transaction/transaction.dart';
 import 'package:cash_expenses/widgets/chart/chart_widget.dart';
 import 'package:cash_expenses/widgets/transaction/transaction_list_widget.dart';
-import 'package:cash_expenses/widgets/transaction/new_transaction_input_widget.dart';
+import 'package:cash_expenses/widgets/transaction/new_transaction_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -73,12 +73,12 @@ class _HomePageState extends State<HomePage> {
   List<Transaction> get _recentTransactions => _transactions.where(
       (tx) => tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)))).toList();
 
-  void _addNewTransaction(String title, double amount) {
+  void _addNewTransaction(String title, double amount, DateTime date) {
     setState(() {
       _transactions.add(Transaction(
         title: title,
         amount: amount,
-        date: DateTime.now(),
+        date: date,
         id: DateTime.now().toString(),
       ));
     });
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
   void _showAddTransactionBottomSheet(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
-      builder: (_) => NewTransactionInputWidget(_addNewTransaction),
+      builder: (_) => NewTransactionWidget(_addNewTransaction),
     );
   }
 
