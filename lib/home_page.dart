@@ -12,62 +12,40 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<Transaction> _transactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'New shoes',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //     id: 't2',
-    //     title: 'Old friends',
-    //     amount: 999999999.99,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't3',
-    //     title: 'New thoughts',
-    //     amount: 100.05,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't4',
-    //     title: 'New thoughts',
-    //     amount: 100.10,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't5',
-    //     title: 'New thoughts',
-    //     amount: 130.39,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't6',
-    //     title: 'New thoughts',
-    //     amount: 15.0,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't7',
-    //     title: 'New thoughts',
-    //     amount: 10.0,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't8',
-    //     title: 'New thoughts',
-    //     amount: 11.11,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't9',
-    //     title: 'New thoughts',
-    //     amount: 12.0,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't10',
-    //     title: 'New thoughts',
-    //     amount: 11.12,
-    //     date: DateTime.now()),
-    // Transaction(
-    //     id: 't11',
-    //     title: 'New thoughts',
-    //     amount: 100.0,
-    //     date: DateTime.now()),
+    Transaction(
+      id: 't1',
+      title: 'Shoes',
+      amount: 69.99,
+      date: DateTime.now().subtract(Duration(days: 6)),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Desk',
+      amount: 20.15,
+      date: DateTime.now().subtract(Duration(days: 5)),
+    ),
+    Transaction(
+        id: 't3',
+        title: 'Chair',
+        amount: 73.05,
+        date: DateTime.now().subtract(Duration(days: 4))),
+    Transaction(
+        id: 't4',
+        title: 'Medicine',
+        amount: 100.10,
+        date: DateTime.now().subtract(Duration(days: 3))),
+    Transaction(
+        id: 't5',
+        title: 'Game',
+        amount: 10.00,
+        date: DateTime.now().subtract(Duration(days: 2))),
+    Transaction(
+        id: 't6',
+        title: 'Carpet',
+        amount: 15.0,
+        date: DateTime.now().subtract(Duration(days: 1))),
+    Transaction(
+        id: 't7', title: 'Tea', amount: 3.5, date: DateTime.now()),
   ];
 
   List<Transaction> get _recentTransactions => _transactions
@@ -128,14 +106,14 @@ class _HomePageState extends State<HomePage> {
               height: (MediaQuery.of(context).size.height -
                       _appBar.preferredSize.height -
                       MediaQuery.of(context).padding.top) *
-                  0.4,
+                  0.22,
               child: ChartWidget(_recentTransactions),
             ),
             Container(
               height: (MediaQuery.of(context).size.height -
                       _appBar.preferredSize.height -
                       MediaQuery.of(context).padding.top) *
-                  0.6,
+                  0.78,
               child: TransactionListWidget(
                   _recentTransactions, _removeTransaction),
             ),
