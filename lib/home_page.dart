@@ -44,9 +44,10 @@ class _HomePageState extends State<HomePage> {
         title: 'Carpet',
         amount: 15.0,
         date: DateTime.now().subtract(Duration(days: 1))),
-    Transaction(
-        id: 't7', title: 'Tea', amount: 3.5, date: DateTime.now()),
+    Transaction(id: 't7', title: 'Tea', amount: 3.5, date: DateTime.now()),
   ];
+
+  bool _showChart = false;
 
   List<Transaction> get _recentTransactions => _transactions
       .where(
@@ -77,6 +78,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     final _appBar = AppBar(
       title: Text(
         'Personal Expenses',
@@ -92,6 +95,20 @@ class _HomePageState extends State<HomePage> {
         )
       ],
     );
+    final _transactionListWidget = Container(
+      height: (MediaQuery.of(context).size.height -
+              _appBar.preferredSize.height -
+              MediaQuery.of(context).padding.top) *
+          0.78,
+      child: TransactionListWidget(_recentTransactions, _removeTransaction),
+    );
+    final _chartWidget = (heightWeight) => Container(
+          height: (MediaQuery.of(context).size.height -
+                  _appBar.preferredSize.height -
+                  MediaQuery.of(context).padding.top) *
+              heightWeight,
+          child: ChartWidget(_recentTransactions),
+        );
     return Scaffold(
       appBar: _appBar,
       floatingActionButton: FloatingActionButton(
@@ -102,21 +119,21 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: (MediaQuery.of(context).size.height -
-                      _appBar.preferredSize.height -
-                      MediaQuery.of(context).padding.top) *
-                  0.22,
-              child: ChartWidget(_recentTransactions),
-            ),
-            Container(
-              height: (MediaQuery.of(context).size.height -
-                      _appBar.preferredSize.height -
-                      MediaQuery.of(context).padding.top) *
-                  0.78,
-              child: TransactionListWidget(
-                  _recentTransactions, _removeTransaction),
-            ),
+            if (_isLandscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('Show Chart'),
+                  Switch(
+                    value: _showChart,
+                    onChanged: (val) => setState(() => _showChart = val),
+                  ),
+                ],
+              ),
+            if (!_isLandscape) _chartWidget(0.22),
+            if (!_isLandscape) _transactionListWidget,
+            if (_isLandscape)
+              _showChart ? _chartWidget(0.68) : _transactionListWidget,
           ],
         ),
       ),

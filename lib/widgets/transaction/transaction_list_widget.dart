@@ -7,21 +7,23 @@ class TransactionListWidget extends StatelessWidget {
   final List<Transaction> _transactions;
   final Function _removeTransaction;
 
-  TransactionListWidget(this._transactions, this._removeTransaction); 
+  TransactionListWidget(this._transactions, this._removeTransaction);
 
   @override
   Widget build(BuildContext context) => Container(
         child: _transactions.isEmpty
-            ? Column(
-                children: <Widget>[
-                  Container(
-                    height: 200,
-                    child: Image.asset('assets/images/terminator.jpeg',
-                        fit: BoxFit.cover),
-                  ),
-                  SizedBox(height: 10),
-                  Text('No transactions added yet.'),
-                ],
+            ? LayoutBuilder(
+                builder: (ctx, constraints) => Column(
+                  children: <Widget>[
+                    Container(
+                      height: constraints.maxHeight * 0.6,
+                      child: Image.asset('assets/images/terminator.jpeg',
+                          fit: BoxFit.cover),
+                    ),
+                    SizedBox(height: 10),
+                    Text('No transactions added yet.'),
+                  ],
+                ),
               )
             : ListView.builder(
                 itemBuilder: (ctx, i) => TransactionWidget(
