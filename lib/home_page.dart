@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:cash_expenses/models/transaction/transaction.dart';
@@ -78,8 +79,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final _isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    final _mediaQuery = MediaQuery.of(context);
+    final _isLandscape = _mediaQuery.orientation == Orientation.landscape;
     final _appBar = AppBar(
       title: Text(
         'Personal Expenses',
@@ -96,25 +97,27 @@ class _HomePageState extends State<HomePage> {
       ],
     );
     final _transactionListWidget = Container(
-      height: (MediaQuery.of(context).size.height -
+      height: (_mediaQuery.size.height -
               _appBar.preferredSize.height -
-              MediaQuery.of(context).padding.top) *
+              _mediaQuery.padding.top) *
           0.78,
       child: TransactionListWidget(_recentTransactions, _removeTransaction),
     );
     final _chartWidget = (heightWeight) => Container(
-          height: (MediaQuery.of(context).size.height -
+          height: (_mediaQuery.size.height -
                   _appBar.preferredSize.height -
-                  MediaQuery.of(context).padding.top) *
+                  _mediaQuery.padding.top) *
               heightWeight,
           child: ChartWidget(_recentTransactions),
         );
     return Scaffold(
       appBar: _appBar,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _showAddTransactionBottomSheet(context),
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () => _showAddTransactionBottomSheet(context),
+            ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -124,7 +127,8 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text('Show Chart'),
-                  Switch(
+                  Switch.adaptive(
+                    activeColor: Theme.of(context).accentColor,
                     value: _showChart,
                     onChanged: (val) => setState(() => _showChart = val),
                   ),
