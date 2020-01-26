@@ -11,26 +11,24 @@ class TransactionListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        child: _transactions.isEmpty
-            ? LayoutBuilder(
-                builder: (ctx, constraints) => Column(
-                  children: <Widget>[
-                    Container(
-                      height: constraints.maxHeight * 0.6,
-                      child: Image.asset('assets/images/terminator.jpeg',
-                          fit: BoxFit.cover),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text('No transactions added yet.'),
-                  ],
-                ),
-              )
-            : ListView.builder(
-                itemBuilder: (ctx, i) => TransactionWidget(
-                  _transactions[i],
-                  _removeTransaction,
-                ),
-                itemCount: _transactions.length,
+      child: _transactions.isEmpty
+          ? LayoutBuilder(
+              builder: (ctx, constraints) => Column(
+                children: <Widget>[
+                  Container(
+                    height: constraints.maxHeight * 0.6,
+                    child: Image.asset('assets/images/terminator.jpeg',
+                        fit: BoxFit.cover),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text('No transactions added yet.'),
+                ],
               ),
-      );
+            )
+          : ListView(
+              children: _transactions
+                  .map((tx) => TransactionWidget(
+                      ValueKey(tx.id), tx, _removeTransaction))
+                  .toList(),
+            ));
 }
