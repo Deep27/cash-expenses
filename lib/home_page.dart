@@ -82,16 +82,16 @@ class _HomePageState extends State<HomePage> {
     final _mediaQuery = MediaQuery.of(context);
     final _isLandscape = _mediaQuery.orientation == Orientation.landscape;
     final _appBar = AppBar(
-      title: Text(
+      title: const Text(
         'Personal Expenses',
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Open Sans',
           fontWeight: FontWeight.bold,
         ),
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.add),
+          icon: const Icon(Icons.add),
           onPressed: () => _showAddTransactionBottomSheet(context),
         )
       ],
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Platform.isIOS
           ? Container()
           : FloatingActionButton(
-              child: Icon(Icons.add),
+              child: const Icon(Icons.add),
               onPressed: () => _showAddTransactionBottomSheet(context),
             ),
       body: SingleChildScrollView(
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Show Chart'),
+                  const Text('Show Chart'),
                   Switch.adaptive(
                     activeColor: Theme.of(context).accentColor,
                     value: _showChart,

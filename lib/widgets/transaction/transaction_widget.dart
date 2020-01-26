@@ -16,7 +16,7 @@ class TransactionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         vertical: 4,
         horizontal: 3,
       ),
@@ -24,7 +24,7 @@ class TransactionWidget extends StatelessWidget {
         leading: CircleAvatar(
           radius: 30,
           child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: FittedBox(
                 child: Text('\$$_amount'),
               )),
@@ -38,18 +38,14 @@ class TransactionWidget extends StatelessWidget {
         ),
         trailing: MediaQuery.of(context).size.width > 560
             ? FlatButton.icon(
-                label: Text('Delete'),
-                icon: Icon(
-                  Icons.delete,
-                ),
+                label: const Text('Delete'),
+                icon: const Icon(Icons.delete),
                 textColor: Theme.of(context).errorColor,
                 onPressed: () => _removeTransactionFunction(_id),
               )
             : IconButton(
-                icon: Icon(
-                  Icons.delete,
-                  color: Theme.of(context).errorColor,
-                ),
+                icon: const Icon(Icons.delete),
+                color: Theme.of(context).errorColor,
                 onPressed: () => _removeTransactionFunction(_id),
               ),
       ),

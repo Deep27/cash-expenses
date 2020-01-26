@@ -5,7 +5,7 @@ class ChartBarWidget extends StatelessWidget {
   final double _spendingAmount;
   final double _spendingPctOfTotal;
 
-  ChartBarWidget(this._label, this._spendingAmount, this._spendingPctOfTotal);
+  const ChartBarWidget(this._label, this._spendingAmount, this._spendingPctOfTotal);
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +28,15 @@ class ChartBarWidget extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 1.0),
                     color: Color.fromRGBO(220, 220, 220, 1),
-                    borderRadius: BorderRadius.circular(10),
+                    // borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 FractionallySizedBox(
                   heightFactor: _spendingPctOfTotal,
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: BoxDecoration( 
                       color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(10),
+                      // borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),

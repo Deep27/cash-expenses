@@ -20,8 +20,8 @@ class TransactionListWidget extends StatelessWidget {
                       child: Image.asset('assets/images/terminator.jpeg',
                           fit: BoxFit.cover),
                     ),
-                    SizedBox(height: 10),
-                    Text('No transactions added yet.'),
+                    const SizedBox(height: 10),
+                    const Text('No transactions added yet.'),
                   ],
                 ),
               )

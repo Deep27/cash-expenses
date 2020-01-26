@@ -16,12 +16,12 @@ class CashExpensesApp extends StatelessWidget {
         accentColor: Colors.amber,
         fontFamily: _FONT_FAMILY,
         textTheme: ThemeData.light().textTheme.copyWith(
-              title: TextStyle(
+              title: const TextStyle(
                 fontFamily: _FONT_FAMILY,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
-              button: TextStyle(color: Colors.white),
+              button: const TextStyle(color: Colors.white),
             ),
       ),
       home: HomePage(),
