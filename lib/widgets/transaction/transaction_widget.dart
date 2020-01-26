@@ -1,16 +1,13 @@
+import 'package:cash_expenses/models/transaction/transaction.dart';
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 
 class TransactionWidget extends StatelessWidget {
-  final String _title;
-  final double _amount;
-  final DateTime _date;
-  final String _id;
+  final Transaction _transaction;
   final Function _removeTransactionFunction;
 
-  TransactionWidget(this._title, this._amount, this._date, this._id,
-      this._removeTransactionFunction);
+  const TransactionWidget(this._transaction, this._removeTransactionFunction);
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +23,27 @@ class TransactionWidget extends StatelessWidget {
           child: Padding(
               padding: const EdgeInsets.all(10),
               child: FittedBox(
-                child: Text('\$$_amount'),
+                child: Text('\$${_transaction.amount}'),
               )),
         ),
         title: Text(
-          _title,
+          _transaction.title,
           style: Theme.of(context).textTheme.title,
         ),
         subtitle: Text(
-          DateFormat.yMMMd().format(_date),
+          DateFormat.yMMMd().format(_transaction.date),
         ),
         trailing: MediaQuery.of(context).size.width > 560
             ? FlatButton.icon(
                 label: const Text('Delete'),
                 icon: const Icon(Icons.delete),
                 textColor: Theme.of(context).errorColor,
-                onPressed: () => _removeTransactionFunction(_id),
+                onPressed: () => _removeTransactionFunction(_transaction.id),
               )
             : IconButton(
                 icon: const Icon(Icons.delete),
                 color: Theme.of(context).errorColor,
-                onPressed: () => _removeTransactionFunction(_id),
+                onPressed: () => _removeTransactionFunction(_transaction.id),
               ),
       ),
     );

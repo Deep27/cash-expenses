@@ -77,6 +77,30 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  List<Widget> _buildLandscapeContent(
+          Function buildChartWidget, Container transactionListWidget) =>
+      [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text('Show Chart'),
+            Switch.adaptive(
+              activeColor: Theme.of(context).accentColor,
+              value: _showChart,
+              onChanged: (val) => setState(() => _showChart = val),
+            ),
+          ],
+        ),
+        _showChart ? buildChartWidget(0.68) : transactionListWidget,
+      ];
+
+  List<Widget> _buildPortraitContent(
+          Function buildChartWidget, Container transactionListWidget) =>
+      [
+        buildChartWidget(0.22),
+        transactionListWidget,
+      ];
+
   @override
   Widget build(BuildContext context) {
     final _mediaQuery = MediaQuery.of(context);
@@ -103,7 +127,7 @@ class _HomePageState extends State<HomePage> {
           0.78,
       child: TransactionListWidget(_recentTransactions, _removeTransaction),
     );
-    final _chartWidget = (heightWeight) => Container(
+    final _buildChartWidget = (heightWeight) => Container(
           height: (_mediaQuery.size.height -
                   _appBar.preferredSize.height -
                   _mediaQuery.padding.top) *
@@ -123,21 +147,9 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             if (_isLandscape)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text('Show Chart'),
-                  Switch.adaptive(
-                    activeColor: Theme.of(context).accentColor,
-                    value: _showChart,
-                    onChanged: (val) => setState(() => _showChart = val),
-                  ),
-                ],
-              ),
-            if (!_isLandscape) _chartWidget(0.22),
-            if (!_isLandscape) _transactionListWidget,
-            if (_isLandscape)
-              _showChart ? _chartWidget(0.68) : _transactionListWidget,
+              ..._buildLandscapeContent(_buildChartWidget, _transactionListWidget),
+            if (!_isLandscape)
+              ..._buildPortraitContent(_buildChartWidget, _transactionListWidget),
           ],
         ),
       ),

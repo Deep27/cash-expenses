@@ -27,10 +27,7 @@ class TransactionListWidget extends StatelessWidget {
               )
             : ListView.builder(
                 itemBuilder: (ctx, i) => TransactionWidget(
-                  _transactions[i].title,
-                  _transactions[i].amount,
-                  _transactions[i].date,
-                  _transactions[i].id,
+                  _transactions[i],
                   _removeTransaction,
                 ),
                 itemCount: _transactions.length,
